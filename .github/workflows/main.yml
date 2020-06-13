@@ -47,11 +47,30 @@ jobs:
           pwd
           ls -al pylate
 
-      - name: Linting
+      - name: Install poetry
+        run: |
+          pip install poetry
+
+      - name: Install dependencies
         run: |
           cd pylate
-          pip install pre-commit
-          pre-commit run --all-files
+          poetry config virtualenvs.in-project true
+          poetry install
+
+      - name: black
+        run: |
+          cd pylate
+          black
+
+      - name: flake8
+        run: |
+          cd pylate
+          flake8
+
+      - name: mypy
+        run: |
+          cd pylate
+          mypy
 
   test:
     needs: lint
@@ -78,24 +97,15 @@ jobs:
 
       - name: Install poetry
         run: |
-          curl -sSL \
-            "https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py" | python
-
-      - name: Set up cache
-        uses: actions/cache@v1
-        with:
-          path: .venv
-          key: venv-${{ matrix.python-version }}-${{ hashFiles('poetry.lock') }}
+          pip install poetry
 
       - name: Install dependencies
         run: |
           cd pylate
-          source "$HOME/pylate/.poetry/env"
           poetry config virtualenvs.in-project true
           poetry install
 
       - name: Run tests
         run: |
           cd pylate
-          source "$HOME/pylate/.poetry/env"
           poetry run pytest
