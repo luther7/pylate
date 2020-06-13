@@ -1,3 +1,0 @@
-[console_scripts]
-pylate = pylate.console.application:main
-
