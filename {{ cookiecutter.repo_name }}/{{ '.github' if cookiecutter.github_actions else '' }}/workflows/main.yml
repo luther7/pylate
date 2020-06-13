@@ -1,28 +1,9 @@
 ---
-name: tests
+name: Tests
 
 on: [push, pull_request]
 
 jobs:
-  template:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.8]
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v1
-        with:
-          python-version: ${{ matrix.python-version }}
-
-      - name: Template
-        run: |
-          pip install cookiecutter
-          cookiecutter --no-input .
-
   lint:
     runs-on: ubuntu-latest
     strategy:
@@ -36,12 +17,6 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: ${{ matrix.python-version }}
-
-      - name: Template
-        run: |
-          pip install cookiecutter
-          cookiecutter --no-input .
-          cd pylate
 
       - name: Linting
         run: |
@@ -63,12 +38,6 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: ${{ matrix.python-version }}
-
-      - name: Template
-        run: |
-          pip install cookiecutter
-          cookiecutter --no-input .
-          cd pylate
 
       - name: Install poetry
         run: |

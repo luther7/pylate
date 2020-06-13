@@ -1,10 +1,12 @@
 # Pylate - Python Template
 
-![Tests](https://github.com/rubberydub/pylate/workflows/Tests/badge.svg)
+![Tests](https://github.com/rubberydub/pylate/workflows/tests/badge.svg)
 
 ---
 
-### Including
+## Including
+
+### Python
 - black
 - flake8
 - mypy
@@ -13,9 +15,14 @@
 - pytest
 - pytest-cov
 - click
-- Docker
 
-### TODO
-- [x] Docker
-- [ ] Docs
-- [ ] Cookiecutter
+### Other
+- Docker
+- GitHub Actions
+
+## Usage
+
+```sh
+$ pip install --user cookiecutter
+$ cookiecutter https://github.com/rubberydub/pylate.git
+```

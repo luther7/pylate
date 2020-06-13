@@ -4,7 +4,6 @@ Dockerfile
 .git
 .gitignore
 scripts
-!scripts/docker-entrypoint.sh
 
 __pycache__
 *.pyc

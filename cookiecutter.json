@@ -1,0 +1,16 @@
+{
+    "name": "pylate",
+    "package_name": "{{ cookiecutter.name.lower().replace(' ', '_') }}",
+    "repo_name": "{{ cookiecutter.name.lower().replace(' ', '-') }}",
+
+    "description": "{{ cookiecutter.name }}",
+    "author": "You <you@email.com>",
+    "version": "0.1.0",
+
+    "github_actions": true,
+    "github_username": "you",
+
+    "_copy_without_render": [
+        "*/workflows/*"
+    ]
+}

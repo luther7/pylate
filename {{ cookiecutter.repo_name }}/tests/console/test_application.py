@@ -1,7 +1,7 @@
 # import pytest
 
 from click.testing import CliRunner
-from pylate.console.application import main
+from {{ cookiecutter.package_name }}.console.application import main
 
 
 def test_example():
@@ -10,5 +10,5 @@ def test_example():
     runner = CliRunner()
     result = runner.invoke(main, command)
 
-    assert "pylate example" in result.output
+    assert "{{ cookiecutter.package_name }} example" in result.output
     assert result.exit_code == 0

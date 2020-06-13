@@ -3,4 +3,4 @@ set -euo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 
 
-poetry run pytest
+docker build --target "${1:-dev}" --tag {{ cookiecutter.package_name }} .
