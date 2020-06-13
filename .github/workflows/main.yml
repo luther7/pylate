@@ -48,10 +48,8 @@ jobs:
           ls -al pylate
 
       - name: Linting
-        working-directory: "$HOME/work/pylate"
         run: |
-          pwd
-          ls -al
+          cd pylate
           pip install pre-commit
           pre-commit run --all-files
 
@@ -90,14 +88,14 @@ jobs:
           key: venv-${{ matrix.python-version }}-${{ hashFiles('poetry.lock') }}
 
       - name: Install dependencies
-        working-directory: "$HOME/work/pylate"
         run: |
+          cd pylate
           source "$HOME/pylate/.poetry/env"
           poetry config virtualenvs.in-project true
           poetry install
 
       - name: Run tests
-        working-directory: "$HOME/work/pylate"
         run: |
+          cd pylate
           source "$HOME/pylate/.poetry/env"
           poetry run pytest
