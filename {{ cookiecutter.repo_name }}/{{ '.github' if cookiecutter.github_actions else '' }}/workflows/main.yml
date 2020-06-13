@@ -31,7 +31,7 @@ jobs:
       - name: black
         run: |
           cd pylate
-          poetry run black
+          poetry run black .
 
       - name: flake8
         run: |
@@ -41,7 +41,7 @@ jobs:
       - name: mypy
         run: |
           cd pylate
-          poetry run mypy
+          poetry run mypy .
 
   test:
     needs: lint
