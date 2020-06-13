@@ -1,6 +1,6 @@
 # Pylate - Python Template
 
 **TODO**
-- [ ] Docker
+- [x] Docker
 - [ ] Docs
 - [ ] Cookiecutter
