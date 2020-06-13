@@ -22,9 +22,11 @@ jobs:
         run: |
           pip install cookiecutter
           cookiecutter --no-input .
+          pwd
           ls -al pylate
 
   lint:
+    needs: template
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -42,11 +44,14 @@ jobs:
         run: |
           pip install cookiecutter
           cookiecutter --no-input .
+          pwd
           ls -al pylate
 
       - name: Linting
         working-directory: "$HOME/pylate"
         run: |
+          pwd
+          ls -al
           pip install pre-commit
           pre-commit run --all-files
 
@@ -70,8 +75,8 @@ jobs:
         run: |
           pip install cookiecutter
           cookiecutter --no-input .
+          pwd
           ls -al pylate
-          cd pylate
 
       - name: Install poetry
         run: |
