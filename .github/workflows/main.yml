@@ -60,17 +60,17 @@ jobs:
       - name: black
         run: |
           cd pylate
-          black
+          poetry run black
 
       - name: flake8
         run: |
           cd pylate
-          flake8
+          poetry run flake8
 
       - name: mypy
         run: |
           cd pylate
-          mypy
+          poetry run mypy
 
   test:
     needs: lint

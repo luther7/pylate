@@ -1,5 +1,5 @@
 ---
-name: Tests
+name: tests
 
 on: [push, pull_request]
 
@@ -18,10 +18,30 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Linting
+      - name: Install poetry
         run: |
-          pip install pre-commit
-          pre-commit run --all-files
+          pip install poetry
+
+      - name: Install dependencies
+        run: |
+          cd pylate
+          poetry config virtualenvs.in-project true
+          poetry install
+
+      - name: black
+        run: |
+          cd pylate
+          poetry run black
+
+      - name: flake8
+        run: |
+          cd pylate
+          poetry run flake8
+
+      - name: mypy
+        run: |
+          cd pylate
+          poetry run mypy
 
   test:
     needs: lint
@@ -41,22 +61,15 @@ jobs:
 
       - name: Install poetry
         run: |
-          curl -sSL \
-            "https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py" | python
-
-      - name: Set up cache
-        uses: actions/cache@v1
-        with:
-          path: .venv
-          key: venv-${{ matrix.python-version }}-${{ hashFiles('poetry.lock') }}
+          pip install poetry
 
       - name: Install dependencies
         run: |
-          source "$HOME/.poetry/env"
+          cd pylate
           poetry config virtualenvs.in-project true
           poetry install
 
       - name: Run tests
         run: |
-          source "$HOME/.poetry/env"
+          cd pylate
           poetry run pytest
