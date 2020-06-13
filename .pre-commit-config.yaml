@@ -17,7 +17,7 @@ repos:
         additional_dependencies: [toml]
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: "0.780"
+    rev: v0.780
     hooks:
       - id: mypy
 
