@@ -80,7 +80,6 @@ jobs:
 
       - name: Set up cache
         uses: actions/cache@v1
-        working-directory: "$HOME/pylate"
         with:
           path: .venv
           key: venv-${{ matrix.python-version }}-${{ hashFiles('poetry.lock') }}
