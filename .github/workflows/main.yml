@@ -22,6 +22,7 @@ jobs:
         run: |
           pip install cookiecutter
           cookiecutter --no-input .
+          ls -al pylate
 
   lint:
     runs-on: ubuntu-latest
@@ -41,9 +42,10 @@ jobs:
         run: |
           pip install cookiecutter
           cookiecutter --no-input .
-          cd pylate
+          ls -al pylate
 
       - name: Linting
+        working_directory: "$HOME/pylate"
         run: |
           pip install pre-commit
           pre-commit run --all-files
@@ -68,6 +70,7 @@ jobs:
         run: |
           pip install cookiecutter
           cookiecutter --no-input .
+          ls -al pylate
           cd pylate
 
       - name: Install poetry
@@ -77,17 +80,20 @@ jobs:
 
       - name: Set up cache
         uses: actions/cache@v1
+        working_directory: "$HOME/pylate"
         with:
           path: .venv
           key: venv-${{ matrix.python-version }}-${{ hashFiles('poetry.lock') }}
 
       - name: Install dependencies
+        working_directory: "$HOME/pylate"
         run: |
-          source "$HOME/.poetry/env"
+          source "$HOME/pylate/.poetry/env"
           poetry config virtualenvs.in-project true
           poetry install
 
       - name: Run tests
+        working_directory: "$HOME/pylate"
         run: |
-          source "$HOME/.poetry/env"
+          source "$HOME/pylate/.poetry/env"
           poetry run pytest
