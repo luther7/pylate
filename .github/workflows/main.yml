@@ -45,7 +45,7 @@ jobs:
           ls -al pylate
 
       - name: Linting
-        working_directory: "$HOME/pylate"
+        working-directory: "$HOME/pylate"
         run: |
           pip install pre-commit
           pre-commit run --all-files
@@ -80,20 +80,20 @@ jobs:
 
       - name: Set up cache
         uses: actions/cache@v1
-        working_directory: "$HOME/pylate"
+        working-directory: "$HOME/pylate"
         with:
           path: .venv
           key: venv-${{ matrix.python-version }}-${{ hashFiles('poetry.lock') }}
 
       - name: Install dependencies
-        working_directory: "$HOME/pylate"
+        working-directory: "$HOME/pylate"
         run: |
           source "$HOME/pylate/.poetry/env"
           poetry config virtualenvs.in-project true
           poetry install
 
       - name: Run tests
-        working_directory: "$HOME/pylate"
+        working-directory: "$HOME/pylate"
         run: |
           source "$HOME/pylate/.poetry/env"
           poetry run pytest

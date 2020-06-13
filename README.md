@@ -1,12 +1,6 @@
-# Pylate - Python Template
+# Pylate - Python Template ![Tests](https://github.com/rubberydub/pylate/workflows/tests/badge.svg)
 
-![Tests](https://github.com/rubberydub/pylate/workflows/tests/badge.svg)
-
----
-
-## Including
-
-### Python
+## Python
 - black
 - flake8
 - mypy
@@ -16,7 +10,7 @@
 - pytest-cov
 - click
 
-### Other
+## Other
 - Docker
 - GitHub Actions
 
