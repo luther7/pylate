@@ -2,7 +2,7 @@
 name = "pylate"
 version = "0.1.0"
 description = ""
-authors = ["Luther Neulist Carroll <luther.carroll@rea-group.com>"]
+authors = [""]
 
 [tool.poetry.dependencies]
 python = "^3.8"
