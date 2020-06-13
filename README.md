@@ -1,6 +1,6 @@
 # Pylate - Python Template
 
-[![Build status](https://github.com/rubberydub/pylate/workflows/test/badge.svg?branch=master&event=push)](https://github.com/rubberydub/pylate/actions?query=workflow%3Atest)
+![Tests](https://github.com/rubberydub/pylate/workflows/Tests/badge.svg)
 
 ---
 
