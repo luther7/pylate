@@ -24,7 +24,7 @@ jobs:
           pre-commit run --all-files
 
   test:
-    needs: Linting
+    needs: lint
     runs-on: ubuntu-latest
 
     strategy:
